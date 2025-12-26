@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:03 by mlouis            #+#    #+#             */
-/*   Updated: 2025/12/26 18:27:03 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/12/26 18:34:44 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 	private:
-		int					_nb;
+		int					_raw;
 		static const int	_frac = 8;
 };
 
