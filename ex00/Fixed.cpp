@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:01 by mlouis            #+#    #+#             */
-/*   Updated: 2025/12/26 19:06:33 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/12/26 19:06:54 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ Fixed::Fixed(void)
 	setRawBits(0);
 }
 
-Fixed::Fixed(const Fixed& f) : _raw(f._raw)
+Fixed::Fixed(const Fixed& f)
 {
 	std::cout << "Copy constructor called\n";
-	// setRawBits(f.getRawBits());
+	setRawBits(f.getRawBits());
 }
 
 Fixed& Fixed::operator=(const Fixed& f)
