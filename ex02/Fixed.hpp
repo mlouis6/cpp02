@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:03 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/06 15:34:52 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/10 10:38:36 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ class Fixed
 		~Fixed(void);
 		Fixed& operator=(const Fixed& f);
 
+		//* OPERATORS
+		bool	operator>(const Fixed& r);
+		bool	operator<(const Fixed& r);
+		bool	operator>=(const Fixed& r);
+		bool	operator<=(const Fixed& r);
+		bool	operator==(const Fixed& r);
+		bool	operator!=(const Fixed& r);
+		Fixed 	operator+(const Fixed& r) const;
+		Fixed 	operator-(const Fixed& r) const;
+		Fixed 	operator*(const Fixed& r) const;
+		Fixed 	operator/(const Fixed& r) const;
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
+		
+		//* MIN/MAX
+		static Fixed&	min(Fixed& l, Fixed& r);
+		static const Fixed&	min(const Fixed& l, const Fixed& r);
+		static Fixed&	max(Fixed& l, Fixed& r);
+		static const Fixed&	max(const Fixed& l, const Fixed& r);
+		
 		//* SETTERS / GETTERS
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:01 by mlouis            #+#    #+#             */
-/*   Updated: 2025/12/26 19:34:16 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/06 13:42:54 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ Fixed::Fixed(void)
 //TODO:
 Fixed::Fixed(const int n)
 {
-
+	_raw = n * (1 << _frac);
 }
 
 Fixed::Fixed(const float n)
 {
-
+	_raw = roundf(n * (1 << _frac));
 }
 
 Fixed::Fixed(const Fixed& f)
@@ -51,7 +51,7 @@ Fixed::~Fixed(void)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
+	// std::cout << "getRawBits member function called\n";
 	return (_raw);
 }
 
@@ -60,18 +60,18 @@ void	Fixed::setRawBits(int const raw)
 	_raw = raw;
 }
 
-//TODO:
 float	Fixed::toFloat(void) const
 {
-	return (9.8f);
+	return ((float) _raw / (1 << _frac));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (10);
+	return (_raw / (1 << _frac));
 }
 
-std::ostream& operator<<(std::ostream& so, const Fixed& f)
+std::ostream& operator<<(std::ostream& os, const Fixed& f)
 {
-	return ("lol");
+	os << f.toFloat();
+	return (os);
 }
