@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:01 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/06 13:42:54 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/10 10:49:12 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Fixed::Fixed(void)
 	setRawBits(0);
 }
 
-//TODO:
 Fixed::Fixed(const int n)
 {
 	_raw = n * (1 << _frac);
@@ -51,7 +50,7 @@ Fixed::~Fixed(void)
 
 int	Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called\n";
+	std::cout << "getRawBits member function called\n";
 	return (_raw);
 }
 
