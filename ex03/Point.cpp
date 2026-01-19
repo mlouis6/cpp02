@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 14:55:31 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/14 14:04:26 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/19 13:19:46 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Point& Point::operator=(const Point& p)
 
 Point::~Point(void)
 {
-	std::cout << "bye\n";
+	// std::cout << "bye\n";
 }
 
 Fixed	Point::getX(void) const

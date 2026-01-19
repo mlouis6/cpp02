@@ -6,13 +6,13 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 18:12:59 by mlouis            #+#    #+#              #
-#    Updated: 2026/01/13 14:57:27 by mlouis           ###   ########.fr        #
+#    Updated: 2026/01/19 13:19:11 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY = all clean fclean re
 
-NAME = fixed.out
+NAME = bsp.out
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

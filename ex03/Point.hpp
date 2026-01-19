@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 14:55:36 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/18 14:23:23 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/19 13:02:43 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Point
 		//* SETTERS / GETTERS
 		Fixed	getX(void) const;
 		Fixed	getY(void) const;
-		
+	
+
 	private:
 		Fixed const _x;
 		Fixed const _y;
