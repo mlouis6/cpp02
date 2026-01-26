@@ -6,17 +6,18 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 18:12:59 by mlouis            #+#    #+#              #
-#    Updated: 2026/01/20 11:49:29 by mlouis           ###   ########.fr        #
+#    Updated: 2026/01/26 16:00:11 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY = all clean fclean re
+.PHONY: all clean fclean re
 
 NAME := fixed.out
 
 SRCS := Fixed.cpp main.cpp
-INCS := Fixed.hpp
+INCS := .
 OBJS := $(SRCS:%.cpp=%.o)
+DEPS := $(OBJS:.o=.d)
 
 CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98

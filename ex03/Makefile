@@ -6,16 +6,16 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 18:12:59 by mlouis            #+#    #+#              #
-#    Updated: 2026/01/20 11:50:15 by mlouis           ###   ########.fr        #
+#    Updated: 2026/01/26 14:14:02 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY = all clean fclean re
+.PHONY: all clean fclean re
 
 NAME := bsp.out
 
 SRCS := Fixed.cpp Point.cpp bsp.cpp main.cpp
-INCS := Fixed.hpp Point.hpp
+INCS := .
 OBJS := $(SRCS:%.cpp=%.o)
 DEPS := $(OBJS:.o=.d)
 

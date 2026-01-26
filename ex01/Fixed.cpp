@@ -6,13 +6,15 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:01 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/10 10:49:12 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/26 14:20:02 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+
+const int	Fixed::_frac = 8;
 
 Fixed::Fixed(void)
 {
@@ -39,7 +41,8 @@ Fixed::Fixed(const Fixed& f)
 Fixed& Fixed::operator=(const Fixed& f)
 {
 	std::cout << "Copy assignment operator called\n";
-	setRawBits(f.getRawBits());
+	if (this != &f)
+		setRawBits(f.getRawBits());
 	return (*this);
 }
 
@@ -61,7 +64,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float) _raw / (1 << _frac));
+	return (static_cast<float>(_raw) / (1 << _frac));
 }
 
 int	Fixed::toInt(void) const

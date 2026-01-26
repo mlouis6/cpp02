@@ -6,13 +6,16 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:01 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/18 14:19:55 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/26 15:37:40 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+#include <limits>
+
+const int	Fixed::_frac = 8;
 
 Fixed::Fixed(void)
 {
@@ -62,7 +65,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float) _raw / (1 << _frac));
+	return (static_cast<float>(_raw) / (1 << _frac));
 }
 
 int	Fixed::toInt(void) const
@@ -108,26 +111,92 @@ bool	Fixed::operator!=(const Fixed& r) const
 
 Fixed	Fixed::operator+(const Fixed& r) const
 {
+	long	res;
+
+	res = static_cast<long>(this->_raw) + static_cast<long>(r._raw);
+	if (res > std::numeric_limits<int>::max())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::max());
+		std::cout << "Error\nOverflow" << std::endl;
+		return (f);
+	}
 	return (Fixed(this->toFloat() + r.toFloat()));
 }
 
 Fixed	Fixed::operator-(const Fixed& r) const
 {
+	long	res;
+
+	res = static_cast<long>(this->_raw) - static_cast<long>(r._raw);
+	if (res < std::numeric_limits<int>::min())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::min());
+		std::cout << "Error\nUnderflow" << std::endl;
+		return (f);
+	}
 	return (Fixed(this->toFloat() - r.toFloat()));
 }
 
 Fixed	Fixed::operator*(const Fixed& r) const
 {
+	long	res;
+
+	res = static_cast<long>(this->_raw) * static_cast<long>(r._raw);
+	if (res > std::numeric_limits<int>::max())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::max());
+		std::cout << "Error\nOverflow" << std::endl;
+		return (f);
+	}
+	else if (res < std::numeric_limits<int>::min())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::min());
+		std::cout << "Error\nUnderflow" << std::endl;
+		return (f);
+	}
 	return (Fixed(this->toFloat() * r.toFloat()));
 }
 
 Fixed	Fixed::operator/(const Fixed& r) const
 {
+	long	res;
+
+	if (r.toFloat() == 0)
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::min());
+		std::cout << "Error\nCan't divide by zero" << std::endl;
+		return (f);
+	}
+	res = static_cast<long>(this->_raw) / static_cast<long>(r._raw);
+	if (res > std::numeric_limits<int>::max())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::max());
+		std::cout << "Error\nOverflow" << std::endl;
+		return (f);
+	}
+	else if (res < std::numeric_limits<int>::min())
+	{
+		Fixed f;
+		f.setRawBits(std::numeric_limits<int>::min());
+		std::cout << "Error\nUnderflow" << std::endl;
+		return (f);
+	}
 	return (Fixed(this->toFloat() / r.toFloat()));
 }
 
 Fixed&	Fixed::operator++(void)
 {
+	if (this->_raw == std::numeric_limits<int>::max())
+	{
+		std::cout << "Error\nOverflow" << std::endl;
+		return (*this);
+	}
 	this->_raw += 1;
 	return (*this);
 }
@@ -142,6 +211,11 @@ Fixed	Fixed::operator++(int)
 
 Fixed&	Fixed::operator--(void)
 {
+	if (this->_raw == std::numeric_limits<int>::min())
+	{
+		std::cout << "Error\nUnderflow" << std::endl;
+		return (*this);
+	}
 	this->_raw -= 1;
 	return (*this);
 }

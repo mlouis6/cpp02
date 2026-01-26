@@ -6,14 +6,14 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 18:14:03 by mlouis            #+#    #+#             */
-/*   Updated: 2026/01/06 15:34:52 by mlouis           ###   ########.fr       */
+/*   Updated: 2026/01/26 15:38:21 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-# include <iostream>
+# include <iosfwd>
 
 class Fixed
 {
@@ -36,7 +36,7 @@ class Fixed
 	
 	private:
 		int					_raw;
-		static const int	_frac = 8;
+		static const int	_frac;
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& f);
